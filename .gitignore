@@ -1,0 +1,40 @@
+# Secrets (CLAUDE.md safety rule 6: never commit these)
+.env
+.env.*
+!.env.example
+secrets/
+client_secret*.json
+token.json
+
+# Runtime output and throwaway environments
+logs/
+models/
+sandbox/
+.bakeoff/
+
+# Audio recordings and model weights
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.onnx
+*.tflite
+*.gguf
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Python
+__pycache__/
+*.py[oc]
+.venv/
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+.ruff_cache/
+
+# Claude Code personal settings
+.claude/settings.local.json

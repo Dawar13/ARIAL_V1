@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "windows-mcp": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["--python", "3.13", "windows-mcp", "serve"],
+      "env": {
+        "ANONYMIZED_TELEMETRY": "false"
+      }
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@playwright/mcp@latest", "--extension"]
+    }
+  }
+}

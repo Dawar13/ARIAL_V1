@@ -1,0 +1,38 @@
+# Ariel settings, loaded once through ariel.config.
+# Unknown or missing keys are an error, so add any new key to src/ariel/config.py as well.
+
+[trigger]
+hotkey = "<ctrl>+<alt>+space"
+kill_hotkey = "<ctrl>+<alt>+k"
+wake_phrase = "ariel wake up"
+wake_model = ""            # placeholder in 0.5, custom model in Phase 1
+wake_threshold = 0.5
+
+[stt]
+model = "small.en"         # CPU only, see docs/adr/0002-model-sizes.md
+device = "cpu"             # "cuda" on a laptop with an NVIDIA GPU
+compute_type = "int8"      # "float16" on CUDA
+language = "en"
+input_device = ""          # set in 0.5 if the default is wrong
+
+[tts]
+engine = "kokoro"
+voice = ""                 # chosen in 0.5
+output_device = ""
+
+[models]
+local = ""                 # exact Ollama tag, chosen in 0.4
+cloud_provider = ""        # Phase 2
+cloud_model = ""           # Phase 2
+daily_cost_cap_inr = 100
+
+[safety]
+sandbox_dir = "sandbox"
+confirm = ["send", "reply", "forward", "delete", "trash", "move", "overwrite",
+           "pay", "purchase", "post", "submit", "install", "uninstall",
+           "system_settings", "close_unsaved"]
+
+[paths]
+logs = "logs"
+models = "models"
+secrets = "secrets"
