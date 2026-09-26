@@ -1,0 +1,69 @@
+# Bake-off tasks for choosing the brain base (task 0.7, docs/phases/phase-0.md).
+# Every task is read-only or writes only inside the sandbox folder. Both frameworks get the
+# same prompt, the same cloud model and the same step limit. The owner watches every run and
+# judges success; "expected" is a hint for that judgement, not an automatic check.
+#
+# Placeholders, filled in by the runner at run time:
+#   {sandbox}      absolute path of the repo's sandbox/ folder
+#   {repo}         absolute path of the repo
+#   {downloads}    the owner's Downloads folder
+#   {owner_email}  the owner's own Gmail address
+
+step_limit: 25
+
+tasks:
+  - id: 1
+    app: Notepad
+    prompt: 'Open Notepad, type "bake-off one", and save the file as {sandbox}\bakeoff1.txt.'
+    expected: '{sandbox}\bakeoff1.txt exists and contains exactly "bake-off one".'
+
+  - id: 2
+    app: Calculator
+    prompt: "Open Calculator, compute 18% of 84,500, and tell me the result."
+    expected: "Reports 15,210 and got it from Calculator."
+
+  - id: 3
+    app: File Explorer
+    prompt: 'In File Explorer, open {sandbox} and create a folder named "reports" there.'
+    expected: '{sandbox}\reports exists as an empty folder. Nothing else changed.'
+
+  - id: 4
+    app: Settings
+    prompt: "Open Settings and tell me the Windows version and build."
+    expected: "Matches docs/hardware.md (Windows 11, version 25H2, build 26200.x). No setting changed."
+
+  - id: 5
+    app: Chrome
+    prompt: >-
+      In Chrome, search YouTube for "Andrej Karpathy intro to large language models" and tell me
+      the first result's title and channel.
+    expected: "Title and channel match the first result the owner sees on screen."
+
+  - id: 6
+    app: Chrome
+    prompt: "In Chrome, find today's weather in Mumbai and tell me the temperature."
+    expected: "A plausible current temperature, taken from a page visible in Chrome."
+
+  - id: 7
+    app: VS Code
+    prompt: "Open VS Code and open the folder {repo}."
+    expected: "A VS Code window shows the repo folder in its Explorer. Tests an Electron app."
+
+  - id: 8
+    app: File Explorer
+    prompt: "Find the largest file in {downloads} and tell me its name and size."
+    expected: "Matches the largest file when the owner sorts Downloads by size. Nothing opened or moved."
+
+  - id: 9
+    app: Chrome, Notepad
+    prompt: >-
+      Copy the first paragraph of the Wikipedia article "Ariel (The Tempest)" into a new Notepad
+      file and save it as {sandbox}\bakeoff9.txt.
+    expected: "{sandbox}\\bakeoff9.txt holds the article's first paragraph."
+
+  - id: 10
+    app: Gmail in Chrome
+    prompt: >-
+      In Gmail in Chrome, create a draft to {owner_email} with the subject "bake-off draft".
+      Do not send it.
+    expected: 'A draft "bake-off draft" to the owner exists in Drafts. Nothing was sent.'

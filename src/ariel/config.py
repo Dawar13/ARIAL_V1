@@ -72,6 +72,13 @@ class PathsConfig(_Table):
     secrets: Path
 
 
+class DoctorConfig(_Table):
+    """[doctor]: limits for the health checks."""
+
+    check_timeout_s: Annotated[float, Field(gt=0)]
+    min_free_disk_gb: Annotated[float, Field(ge=0)]
+
+
 class Config(_Table):
     """The whole of config/ariel.toml."""
 
@@ -81,6 +88,7 @@ class Config(_Table):
     models: ModelsConfig
     safety: SafetyConfig
     paths: PathsConfig
+    doctor: DoctorConfig
 
 
 def load_config(path: Path = DEFAULT_CONFIG_PATH) -> Config:

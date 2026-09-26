@@ -8,9 +8,21 @@ authors = [
 ]
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "google-api-python-client>=2.200.0",
+    "google-auth-oauthlib>=1.4.1",
+    "keyring>=25.7.0",
     "mcp>=2.2.0",
+    "ollama>=0.6.2",
     "pydantic>=2.13.5",
+    "pynput>=1.8.2",
+    "realtimestt[faster-whisper,openwakeword]>=0.3.104",
+    "realtimetts[kokoro]>=0.8.6",
+    "rich>=15.0.0",
+    "typer>=0.27.2",
 ]
+
+[project.scripts]
+ariel = "ariel.cli:app"
 
 [build-system]
 requires = ["uv_build>=0.12.19,<0.13.0"]

@@ -12,11 +12,10 @@ import subprocess
 import winreg
 from datetime import date
 
+from hardware_doc import HARDWARE_DOC, write_section
+
 from ariel.config import REPO_ROOT
 
-HARDWARE_DOC = REPO_ROOT / "docs" / "hardware.md"
-BEGIN = "<!-- BEGIN probe_hardware.py: generated, rerun the script instead of editing -->"
-END = "<!-- END probe_hardware.py -->"
 GB = 1024**3
 
 WINDOWS_KEY = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion"
@@ -143,19 +142,8 @@ def machine_section() -> str:
     )
 
 
-def write_section(body: str) -> None:
-    """Replace this script's section of docs/hardware.md and keep everything after it."""
-    rest = ""
-    if HARDWARE_DOC.exists():
-        text = HARDWARE_DOC.read_text(encoding="utf-8")
-        if END in text:
-            rest = text.split(END, 1)[1].lstrip("\n")
-    section = f"# Hardware\n\n{BEGIN}\n{body}{END}\n"
-    HARDWARE_DOC.write_text(section + (f"\n{rest}" if rest else ""), encoding="utf-8", newline="\n")
-
-
 if __name__ == "__main__":
     body = machine_section()
-    write_section(body)
+    write_section("probe_hardware.py", body)
     print(body)
     print(f"Written to {HARDWARE_DOC}")

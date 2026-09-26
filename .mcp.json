@@ -3,7 +3,10 @@
     "windows-mcp": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["--python", "3.13", "windows-mcp", "serve"],
+      "args": [
+        "--python", "3.13", "windows-mcp==0.8.5", "serve",
+        "--exclude-tools", "PowerShell,FileSystem,Registry,Process"
+      ],
       "env": {
         "ANONYMIZED_TELEMETRY": "false"
       }
@@ -11,7 +14,7 @@
     "playwright": {
       "type": "stdio",
       "command": "cmd",
-      "args": ["/c", "npx", "-y", "@playwright/mcp@latest", "--extension"]
+      "args": ["/c", "npx", "-y", "@playwright/mcp@0.0.82", "--extension"]
     }
   }
 }

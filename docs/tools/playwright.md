@@ -1,6 +1,6 @@
 # playwright tools
 
-Listed on 2026-09-26 by `scripts/mcp_probe.py`, which started the server with `cmd /c npx -y @playwright/mcp@latest --extension` from `.mcp.json`.
+Listed on 2026-09-26 by `scripts/mcp_probe.py`, which started the server with `cmd /c npx -y @playwright/mcp@0.0.82 --extension` from `.mcp.json`.
 The server reported itself as `Playwright` version `1.64.0-alpha-1789764292000` and offered 25 tools.
 
 ## browser_close

@@ -2,10 +2,10 @@
 # Unknown or missing keys are an error, so add any new key to src/ariel/config.py as well.
 
 [trigger]
-hotkey = "<ctrl>+<alt>+space"
+hotkey = "<ctrl>+<alt>+<space>"   # pynput format: special keys in angle brackets
 kill_hotkey = "<ctrl>+<alt>+k"
 wake_phrase = "ariel wake up"
-wake_model = ""            # placeholder in 0.5, custom model in Phase 1
+wake_model = "hey_jarvis"  # openWakeWord placeholder until the custom model (Phase 1)
 wake_threshold = 0.5
 
 [stt]
@@ -36,3 +36,7 @@ confirm = ["send", "reply", "forward", "delete", "trash", "move", "overwrite",
 logs = "logs"
 models = "models"
 secrets = "secrets"
+
+[doctor]
+check_timeout_s = 120      # per check; the first MCP server start can take a while
+min_free_disk_gb = 5
